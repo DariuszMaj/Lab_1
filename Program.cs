@@ -39,9 +39,9 @@ namespace Lab_01PO
 
 
         //1. PRYWATNE ZMIENNE
-        public int licznik;
+        public int licznik { get; }
        
-       public int mianownik;
+       public int mianownik { get; }
 
 
 
@@ -60,6 +60,11 @@ namespace Lab_01PO
             {
                 licznik = 0;
                 mianownik = 0;
+            }
+            if(licznik<0 && mianownik < 0)
+            {
+                this.licznik = licznik * (-1);
+                this.mianownik = mianownik * (-1);
             }
             else
             {
@@ -94,12 +99,17 @@ namespace Lab_01PO
         public static Ulamek operator -(Ulamek a, Ulamek b)
         {
             var c = (a.mianownik) * (b.mianownik);
-            var d = (a.licznik) * b.mianownik;
-            var e = (b.licznik) * a.mianownik;
-            var up = d - e;
-            if (up == 0) return new Ulamek(0,c);
+           
+            
+                var d = (a.licznik) * b.mianownik;
+           
+                var e = (b.licznik) * a.mianownik;
+                var up = d - e;
 
-            return new Ulamek(up, c);
+                if (up == 0) return new Ulamek(0, c);
+
+                return new Ulamek(up, c);
+            
         }
 
         //PRZEŁADOWANIE DZIELENIA
